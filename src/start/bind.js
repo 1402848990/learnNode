@@ -8,7 +8,7 @@ function sayBye() {
   console.log("bye");
 }
 
-//异步读取文件
+// 异步读取文件
 function readTxt() {
   fs.readFile("src/note/note01.txt", "utf-8", (err, data) => {
     if (err) {
@@ -19,7 +19,7 @@ function readTxt() {
   });
 }
 
-//同步读取文件
+// 同步读取文件
 function readTxtSync() {
   try {
     const res = fs.readFileSync("src/note/note01.txt", "utf-8");
@@ -29,7 +29,7 @@ function readTxtSync() {
   }
 }
 
-//异步读取图片文件
+// 异步读取图片文件
 function readImg() {
   fs.readFile("src/img/img1.png", (err, data) => {
     if (err) {
@@ -41,10 +41,37 @@ function readImg() {
   });
 }
 
+// 异步写入文件
+function toWriteFile() {
+  const data = "hello,node";
+  fs.writeFile("src/note/note01.txt", data, err => {
+    if (err) {
+      console.log("写入失败：", err);
+    } else {
+      console.log("写入成功");
+    }
+  });
+}
+
+// 异步读取文件信息
+function getFileInfo() {
+  fs.stat("src/note/note01.txt", (err, stat) => {
+    if (err) {
+      console.log("获取文件信息出错", err);
+    } else {
+      if (stat.isFile()) {
+        console.log("fileSize：", stat.size, "birth time", stat.birthtime);
+      }
+    }
+  });
+}
+
 module.exports = {
   sayHello,
   sayBye,
   readTxt,
   readTxtSync,
-  readImg
+  readImg,
+  toWriteFile,
+  getFileInfo
 };

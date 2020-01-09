@@ -1,1 +1,1 @@
-这是note01.txt文件的内容
+hello,node

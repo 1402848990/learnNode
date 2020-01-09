@@ -25,3 +25,10 @@ learnNode，created at 2020/01/09
 2. 同步读取不需要写回调函数，同步返回的就是读取到的内容
 
 - `try{const res = rs.readFile('path','utf-8')}catch(err){console.log(err)}`
+
+## 四、关于写入文件
+
+1. `fs.writeFile('path',data,err=>{})` 此操作将会覆盖原先内容
+2. `fs.stat('path',(err,stat)=>{})` 获取文件的信息
+
+- stat.isFile/.isDirectory/.size/.birthtime/.mtime
