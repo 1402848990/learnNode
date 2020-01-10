@@ -66,6 +66,40 @@ function getFileInfo() {
   });
 }
 
+// stream读取文件
+function streamReadFile() {
+  const rs = fs.createReadStream("src/note/note01.txt", "utf-8");
+  rs.on("data", chunk => {
+    console.log("开始读取文件流...");
+    console.log(chunk);
+  });
+  rs.on("end", () => {
+    console.log("读取结束");
+  });
+  rs.on("error", err => {
+    console.log(err);
+  });
+}
+
+// stream写入文件
+function streamWrite() {
+  const data1 = "one lines";
+  const data2 = "two lines";
+  const towr = fs.createWriteStream("src/note/note01.txt", "utf-8");
+  console.log("开始流写入...");
+  towr.write(data1);
+  towr.write(data2);
+  towr.end();
+  console.log("流写入完成...");
+}
+
+// 流复制文件
+function copyFile() {
+  const rs = fs.createReadStream("src/note/sample.txt", "utf-8");
+  const ws = fs.createWriteStream("src/note/beifen.txt", "utf-8");
+  rs.pipe(ws);
+}
+
 module.exports = {
   sayHello,
   sayBye,
@@ -73,5 +107,8 @@ module.exports = {
   readTxtSync,
   readImg,
   toWriteFile,
-  getFileInfo
+  getFileInfo,
+  streamReadFile,
+  streamWrite,
+  copyFile
 };
