@@ -32,3 +32,22 @@ learnNode，created at 2020/01/09
 2. `fs.stat('path',(err,stat)=>{})` 获取文件的信息
 
 - stat.isFile/.isDirectory/.size/.birthtime/.mtime
+
+## 五、关于 stream
+
+1. 流读取
+   `const rs = fs.createReadStream('path','unicode')`
+   `rs.on('data',(res)=>{})`
+   `rs.on('end',()=>{})`
+   `rs.on('error',(err)=>{})`
+2. 流写入
+   `const ws = fs.createWriteStream('path','unicode')`
+   `ws.write(data)`
+   `ws.end()`
+3. 复制内容
+   `rs.pipe(ws)`
+
+## 六、关于 http server
+
+1. http 是 node 的内置模块，可用于创建 server
+   `const server = http.createServer((request,response=>{ console.log(request.method,request.url) response.writeHead(200,{'Content-Type':'text/html'}) response.end('<h1>welcome</h1>') }))`
