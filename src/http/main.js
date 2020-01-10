@@ -1,7 +1,18 @@
 "use strict";
 const http = require("http");
+const url = require("url");
+const path = require("path");
+
+console.log(path.resolve("."));
 
 startServer();
+
+process.nextTick(() => {
+  console.log("轮询结束");
+});
+process.on("exit", code => {
+  console.log(`end-${code}`);
+});
 
 function startServer() {
   const server = http.createServer((request, response) => {
