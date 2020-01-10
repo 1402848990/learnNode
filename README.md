@@ -50,4 +50,6 @@ learnNode，created at 2020/01/09
 ## 六、关于 http server
 
 1. http 是 node 的内置模块，可用于创建 server
-   `const server = http.createServer((request,response=>{ console.log(request.method,request.url) response.writeHead(200,{'Content-Type':'text/html'}) response.end('<h1>welcome</h1>') }))`
+   ```js
+   const server = http.createServer((request,response=>{ console.log(request.method,request.url) response.writeHead(200,{'Content-Type':'text/html'}) response.end('<h1>welcome</h1>') }))
+   ```
